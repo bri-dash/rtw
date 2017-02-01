@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href=chat.css>
+		<title>simple chat.</title>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+		
+			var socket = io.connect();
+			
+			//gives feedback when connection is established
+			socket.on('connect', function() {
+				console.log("Connected");
+			});
+
+			// Receive from any event
+			socket.on('chatmessage', function (data) {
+				console.log(data);
+				document.getElementById('messages').innerHTML = "" + data + 
+ + "" + document.getElementById('messages').innerHTML;
+			});
+			
+			var sendmessage = function(message) {
+				//print to browser console the event that's happening
+				console.log("chatmessage: " + message);
+				//emit this event to the server
+				socket.emit('chatmessage', message);
+			};
+
+	
+		</script>	
+	</head>
+ <body>
+ <div id="messages">
+ No Messages Yet
+ </div>
+ <input type="text" id="message" name="message">
+ <input type="submit" value="submit" onclick="sendmessage(document.getElementById('message').value);">
+ </body>
+</html>
