@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Watch the garden grow</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <!-- to get rid of favicon request in console -->
+  <link rel="shortcut icon" href="">
+
+  <!-- P5 STUFF -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/socket.io.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="flowers.js"></script>
+
+  <style> body {
+  			padding: 0; margin: 0; font-family:'Playfair Display', serif; font-size: 1em; text-align: left; background-color: #9ace79;
+  			} 
+
+  </style>
+  
+
+  <script type="text/javascript">
+    var socket = io.connect();
+    
+    socket.on('connect', function() {
+      console.log("Connected");
+    });
+
+    socket.on('sendFlower', function(data){
+      console.log("adding Extra flower");
+      addExternalFlower(data);
+    });
+
+  </script>
+</head>
+
+<body>
+	<header>
+		<h1>watch the garden grow</h1>
+
+	</header>	
+</body>
+</html>
