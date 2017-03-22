@@ -1,0 +1,27 @@
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: 70%;
+	color: black;
+	background-color: #b7fffd; 
+	text-align: center;
+  } 
+
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 30px;
+}
+
+.tools {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	padding-left: 20%;
+	padding-right: 20%;
+}
+
+
+

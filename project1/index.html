@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interweb Museum of Contemporary Art</title>
+  <!-- to get rid of favicon request in console -->
+  <link rel="shortcut icon" href="">
+
+  <!-- link to external style sheet -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- added font-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
+
+
+  <!-- P5 STUFF -->
+  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/socket.io.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="shape.js"></script>
+
+  <script type="text/javascript">
+    var socket = io.connect();
+    
+    socket.on('connect', function() {
+      console.log("Connected");
+    });
+
+    socket.on('sendShape', function(data){
+      console.log("adding Extra shape");
+      addShape(data);
+    });
+
+  </script>
+  <style> body{padding:0; margin:0;} </style>
+</head>
+
+<body>
+	<div class="top">
+  <header>
+		<h1>welcome to the gallery.</h1>
+    <h2>we need a new addition for our artspace, and we like to see people work together. as our resident artists, feel free to play with shapes, and add color (color names, hex codes, and RGB names are all fair game).</h2>
+	</header>
+  </div>
+	<div class="tools">
+  <form>
+  		<input type="radio" name="shape" value="circle" checked> circle
+      <br>
+  		<input type="radio" name="shape" value="rectangle"> rectangle
+      <br>
+  		<input type="radio" name="shape" value="triangle"> triangle
+      <br>
+	</form>	
+	<form>
+	   choose a color:<br>
+	   <input id="color" type="text" name="color"><br>
+	</form>
+  </div>
+  <div id="sketch"></div>
+
+</body>
+</html>
